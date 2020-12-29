@@ -20,5 +20,5 @@ The model has also been used to flag incorrectly typed gene expression profiles 
    ```
 ### Inference: 
 ```bash
-   pyton tc1_infer.py
+   python tc1_infer.py
    ```
