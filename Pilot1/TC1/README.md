@@ -9,19 +9,16 @@ The model has also been used to flag incorrectly typed gene expression profiles 
 
 ### Setup:
 ```bash
-    conda env create -f environment.yml -n TC1
-    conda activate TC1
-    ```   
+   conda env create -f environment.yml -n TC1
+   conda activate TC1
+   ```
 
 ### Training:
+
 ```bash
-    python tc1_baseline_keras2.py
-    ```   
-
-### Inference:
+   python tc1_baseline_keras2.py
+   ```
+### Inference: 
 ```bash
-    python tc1_infer.py
-    ```   
-
-
-
+   pyton tc1_infer.py
+   ```
