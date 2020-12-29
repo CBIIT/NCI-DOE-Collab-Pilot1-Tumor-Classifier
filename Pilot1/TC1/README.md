@@ -28,6 +28,19 @@ To train the model from scratch, the script [tc1_baseline_keras2.py](tc1_baselin
    python tc1_baseline_keras2.py
    ...
    ...
+Loading data...
+done
+df_train shape: (4320, 60484)
+df_test shape: (1080, 60484)
+X_train shape: (4320, 60483)
+X_test shape: (1080, 60483)
+Y_train shape: (4320, 36)
+Y_test shape: (1080, 36)
+X_train shape: (4320, 60483, 1)
+X_test shape: (1080, 60483, 1)
+0.0 128 20 1
+1.0 128 10 1
+
 _________________________________________________________________
 dense_1 (Dense)              (None, 200)               154752200
 _________________________________________________________________
