@@ -18,7 +18,7 @@ classification of genomic profiles without downsampling the provided expressions
 ### Components:	
 * Processed training and test data
 * Untrained neural network model
-* Trained model weights and topoloty to be used in inference.
+* Trained model weights and topology to be used in inference.
 
 ### Technical Details:
-Please refer to this [README](./Pilot1/TC1/Readme.md)
+Please refer to this [README](./Pilot1/TC1/README.md)
