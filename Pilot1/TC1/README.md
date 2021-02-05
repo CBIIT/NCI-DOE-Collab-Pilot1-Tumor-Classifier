@@ -8,20 +8,82 @@ It is useful for studying the relationships between latent representations of di
 The model has also been used to flag incorrectly typed gene expression profiles from the databases
 
 ### Setup:
+To setup the python environment needed to train and run this model, first make sure you install [conda](https://docs.conda.io/en/latest/) package manager, clone this repository, then create the environment as shown below.
+
 ```bash
-    conda env create -f environment.yml -n TC1
-    conda activate TC1
-    ```   
+   conda env create -f environment.yml -n TC1
+   conda activate TC1
+   ```
+
+To download the processed data needed to train and test the model, and the trained model files, you should create an account first on the Model and Data Clearinghouse [MoDac](modac.cancer.gov). The training and test scripts will prompt you to enter your MoDac credentials.
 
 ### Training:
+To train the model from scratch, the script [tc1_baseline_keras2.py](tc1_baseline_keras2.py) does the following:
+* Reads the model configuration parameters from [tc1_default_model.txt](tc1_default_model.txt)
+* Downloads the training data and splits it to training/validation sets
+* Creates and trains the keras model
+* Saves the best trained model based on the validation accuracy
+* Evaluates the best model on the test dataset
+
+
 ```bash
-    python tc1_baseline_keras2.py
-    ```   
+   python tc1_baseline_keras2.py
+   ...
+   ...
+Loading data...
+done
+df_train shape: (4320, 60484)
+df_test shape: (1080, 60484)
+X_train shape: (4320, 60483)
+X_test shape: (1080, 60483)
+Y_train shape: (4320, 36)
+Y_test shape: (1080, 36)
+X_train shape: (4320, 60483, 1)
+X_test shape: (1080, 60483, 1)
+0.0 128 20 1
+1.0 128 10 1
 
-### Inference:
+_________________________________________________________________
+dense_1 (Dense)              (None, 200)               154752200
+_________________________________________________________________
+activation_3 (Activation)    (None, 200)               0
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 200)               0
+_________________________________________________________________
+dense_2 (Dense)              (None, 20)                4020
+_________________________________________________________________
+activation_4 (Activation)    (None, 20)                0
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 20)                0
+_________________________________________________________________
+dense_3 (Dense)              (None, 36)                756
+_________________________________________________________________
+activation_5 (Activation)    (None, 36)                0
+=================================================================
+Total params: 154,923,632
+Trainable params: 154,923,632
+Non-trainable params: 0
+_________________________________________________________________
+Train on 4320 samples, validate on 1080 samples
+Epoch 21/400:
+loss: 0.0613 - acc: 0.9819 - val_loss: 0.1349 - val_acc: 0.9722
+```
+
+### Inference: 
+To test the trained model in inference, the script [tc1_infer.py](tc1_infer.py) does the following:
+* Downloads the trained model
+* Downloads the processed test dataset with the corresponding labels
+* Performs inference on the test dataset
+* Reports the accuracy of the model on the test dataset
+
+
 ```bash
-    python tc1_infer.py
-    ```   
+   python tc1_infer.py
+   
+   ...
+   Loaded yaml model from disk
+   yaml Test score: 0.12268450603544435
+   yaml Test accuracy: 0.9712962967378121
+   yaml acc: 97.13%
 
-
-
+   ```
