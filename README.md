@@ -1,8 +1,8 @@
 # NCI-DOE-Collab-Pilot1-Tumor_Classifier
 
 ### Description:
-The Tumor Classifier capability (TC1) shows how to train and use a neural network model  to classify tumor types from molecular features 
-(e.g., RNASeq experssions) provided in Genomics Data Commons (GDC).
+The Tumor Classifier capability (TC1) shows how to train and use a neural network model to classify tumor types from molecular features 
+(e.g., RNASeq expressions) provided in Genomics Data Commons (GDC).
 
 ### User Community:	
 Researchers interested in cancer susceptibility/histology; classification of diseases for oncology; cancer biology 
