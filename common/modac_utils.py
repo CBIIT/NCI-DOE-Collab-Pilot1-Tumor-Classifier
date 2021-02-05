@@ -26,6 +26,7 @@ def get_file_from_modac(fname, origin):
             Path to the downloaded file      
     """
     print('Downloading data from modac.cancer.gov, make sure you have an account first.')
+    print("File url:", origin)
     total_size_in_bytes = get_dataObject_modac_filesize(origin)
 
     auth = authenticate_modac()

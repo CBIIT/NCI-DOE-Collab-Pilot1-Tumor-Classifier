@@ -45,69 +45,40 @@ def initialize_parameters(default_model = 'tc1_default_model.txt'):
 
 def run(gParameters):
 
+
+    # load json and create model
+    trained_model_json = gParameters['trained_model_json']
+    json_data_url =  gParameters['data_url']  + trained_model_json 
+    candle.get_file(trained_model_json, json_data_url, datadir=".")
+
+    json_file = open(trained_model_json, 'r')
+    loaded_model_json = json_file.read()
+    json_file.close()
+    loaded_model_json = model_from_json(loaded_model_json)
+
+    # load weights into new model
+    trained_model_h5 = gParameters['trained_model_h5']
+    h5_data_url =  gParameters['data_url']  + trained_model_h5
+    candle.get_file(trained_model_h5, h5_data_url, datadir=".")
+    loaded_model_json.load_weights(trained_model_h5)
+
+    loaded_model_json.compile(loss=gParameters['loss'],
+            optimizer=gParameters['optimizer'],
+            metrics=[gParameters['metrics']])
+
+    # evaluate json loaded model on test data
     X_train, Y_train, X_test, Y_test = bmk.load_data(gParameters)
 
     print('X_test shape:', X_test.shape)
     print('Y_test shape:', Y_test.shape)
 
     # this reshaping is critical for the Conv1D to work
-
     X_test = np.expand_dims(X_test, axis=2)
 
-    print('X_test shape:', X_test.shape)
-
-    output_dir = gParameters['output_dir']
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
-    model_name = gParameters['model_name']
-
-    # load json and create model
-    json_file = open('{}/{}.model.json'.format(output_dir, model_name), 'r')
-    loaded_model_json = json_file.read()
-    json_file.close()
-    loaded_model_json = model_from_json(loaded_model_json)
-
-
-    # load yaml and create model
-    yaml_file = open('{}/{}.model.yaml'.format(output_dir, model_name), 'r')
-    loaded_model_yaml = yaml_file.read()
-    yaml_file.close()
-    loaded_model_yaml = model_from_yaml(loaded_model_yaml)
-
-
-    # load weights into new model
-    loaded_model_json.load_weights('{}/{}.model.h5'.format(output_dir, model_name))
-    print("Loaded json model from disk")
-
-    # evaluate json loaded model on test data
-    loaded_model_json.compile(loss=gParameters['loss'],
-            optimizer=gParameters['optimizer'],
-            metrics=[gParameters['metrics']])
     score_json = loaded_model_json.evaluate(X_test, Y_test, verbose=0)
-
     print('json Test score:', score_json[0])
     print('json Test accuracy:', score_json[1])
-
     print("json %s: %.2f%%" % (loaded_model_json.metrics_names[1], score_json[1]*100))
-
-
-
-    # load weights into new model
-    loaded_model_yaml.load_weights('{}/{}.model.h5'.format(output_dir, model_name))
-    print("Loaded yaml model from disk")
-
-    # evaluate loaded model on test data
-    loaded_model_yaml.compile(loss=gParameters['loss'],
-            optimizer=gParameters['optimizer'],
-            metrics=[gParameters['metrics']])
-    score_yaml = loaded_model_yaml.evaluate(X_test, Y_test, verbose=0)
-
-    print('yaml Test score:', score_yaml[0])
-    print('yaml Test accuracy:', score_yaml[1])
-
-    print("yaml %s: %.2f%%" % (loaded_model_yaml.metrics_names[1], score_yaml[1]*100))
-
 
 def main():
 
