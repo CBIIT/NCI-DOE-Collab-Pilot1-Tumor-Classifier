@@ -81,9 +81,8 @@ To test the trained model in inference, the script [tc1_infer.py](tc1_infer.py) 
    python tc1_infer.py
    
    ...
-   Loaded yaml model from disk
-   yaml Test score: 0.12268450603544435
-   yaml Test accuracy: 0.9712962967378121
-   yaml acc: 97.13%
+   json Test score: 0.14670737570462128
+   json Test accuracy: 0.9712962962962963
+   json acc: 97.13%
 
    ```
