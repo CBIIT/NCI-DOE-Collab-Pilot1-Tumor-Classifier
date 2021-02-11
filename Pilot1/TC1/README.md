@@ -15,7 +15,7 @@ To setup the python environment needed to train and run this model, first make s
    conda activate TC1
    ```
 
-To download the processed data needed to train and test the model, and the trained model files, you should create an account first on the Model and Data Clearinghouse [MoDac](https://modac.cancer.gov). The training and test scripts will prompt you to enter your MoDac credentials.
+To download the processed data needed to train and test the model, and the trained model files, you should create an account first on the Model and Data Clearinghouse [MoDac](modac.cancer.gov). The training and test scripts will prompt you to enter your MoDac credentials.
 
 ### Training:
 To train the model from scratch, the script [tc1_baseline_keras2.py](tc1_baseline_keras2.py) does the following:
