@@ -16,9 +16,16 @@ Using machine learning to classify molecular data has been comonly used. This ca
 classification of genomic profiles without downsampling the provided expressions.
 
 ### Components:	
-* Processed training and test data
-* Untrained neural network model
-* Trained model weights and topology to be used in inference.
+
+Untrained model: 
+* Untrained neural network model is defined in [tc1.model.json](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872). Also available in yaml format.
+
+Data:
+* Processed training and test data in [MoDaC](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872).
+
+Trained Model:
+* Trained model is defined by combining the untrained model + model weights.
+* Trained model weights are used in inference [tc1.model.h5](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872)
 
 ### Technical Details:
 Please refer to this [README](./Pilot1/TC1/README.md)
