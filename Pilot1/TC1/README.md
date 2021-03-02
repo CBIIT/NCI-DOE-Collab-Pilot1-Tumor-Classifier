@@ -4,8 +4,7 @@ The network follows the classic architecture of convolutional models with multip
 The network can optionally use 1D locally connected layers in place of convolution layers as well as dropout layers for regularization. 
 The model is trained and cross-validated on a total of 5,400 RNA-seq profiles from the NCI genomic data commons. 
 The full set of expression features contains 60,483 float columns transformed from RNA-seq FPKM-UQ values. This model achieves around 98% classification accuracy. 
-The associated tumor type mapping for the samples can be found in the file[type_18_class_labels](type_18_class_labels)
-It is useful for studying the relationships between latent representations of different tumor types as well as classifying synthetically generated gene expression profiles. 
+The associated tumor type mapping for the samples can be found in the file [type_18_class_labels](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872) It is useful for studying the relationships between latent representations of different tumor types as well as classifying synthetically generated gene expression profiles. 
 The model has also been used to flag incorrectly typed gene expression profiles from the databases
 
 ### Setup:
