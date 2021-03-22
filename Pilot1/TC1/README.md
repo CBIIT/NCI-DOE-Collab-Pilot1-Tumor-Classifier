@@ -1,30 +1,35 @@
-### Model description:
-TC1, is a 1D convolutional network for classifying RNA-seq gene expression profiles into 18 balanced tumor types (e.g., breast cancer, melanoma, etc). 
-The network follows the classic architecture of convolutional models with multiple 1D convolutional layers interleaved with pooling layers followed by final dense layers. 
-The network can optionally use 1D locally connected layers in place of convolution layers as well as dropout layers for regularization. 
-The model is trained and cross-validated on a total of 5,400 RNA-seq profiles from the NCI genomic data commons. 
-The full set of expression features contains 60,483 float columns transformed from RNA-seq FPKM-UQ values. This model achieves around 98% classification accuracy. 
-The associated tumor type mapping for the samples can be found in the file [type_18_class_labels](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872) It is useful for studying the relationships between latent representations of different tumor types as well as classifying synthetically generated gene expression profiles. 
-The model has also been used to flag incorrectly typed gene expression profiles from the databases
+### Model Description
+This collection contains the model topology files and the trained model weights for the Tumor Classifier model (TC1). TC1 is a 1D convolutional network for classifying RNA-Seq gene expression profiles into 18 balanced tumor types (such as breast cancer, melanoma, and so on). The network follows the classic architecture of convolutional models with multiple 1D convolutional layers interleaved with pooling layers, followed by final dense layers. The network can optionally use the following layers:
+* 1D locally-connected layers in place of convolution layers. 
+* Dropout layers for regularization. 
 
-### Setup:
-To setup the python environment needed to train and run this model, first make sure you install [conda](https://docs.conda.io/en/latest/) package manager, clone this repository, then create the environment as shown below.
+We trained and cross-validated the model on 5,400 RNA-Seq profiles from the Genomic Data Commons (GDC). The full set of expression features contains 60,483 float columns transformed from RNA-Seq FPKM-UQ values. On the balanced dataset, this model achieves around 98% classification accuracy. The associated tumor type mapping for the samples are in the file [type_18_class_labels](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872). This model is useful for studying the relationships between latent representations of different tumor types as well as classifying synthetically-generated gene expression profiles. We have also used this model to flag incorrectly-typed gene expression profiles from the databases.
+
+### Setup
+To set up the Python environment needed to train and run this model:
+1. Install [conda](https://docs.conda.io/en/latest/) package manager. 
+2. Clone this repository. 
+3. Create the environment as shown below.
 
 ```bash
    conda env create -f environment.yml -n TC1
    conda activate TC1
    ```
 
-To download the processed data needed to train and test the model, and the trained model files, you should create an account first on the Model and Data Clearinghouse [MoDac](modac.cancer.gov). The training and test scripts will prompt you to enter your MoDac credentials.
+To download the processed data needed to train and test the model, and the trained model files:
+1. Create an account on the Model and Data Clearinghouse [MoDaC](modac.cancer.gov). 
+2. Follow the instructions in the Training section below.
+3. When prompted by the training and test scripts, enter your MoDaC credentials.
 
-### Training:
-To train the model from scratch, the script [tc1_baseline_keras2.py](tc1_baseline_keras2.py) does the following:
-* Reads the model configuration parameters from [tc1_default_model.txt](tc1_default_model.txt)
-* Downloads the training data and splits it to training/validation sets
-* Creates and trains the keras model
-* Saves the best trained model based on the validation accuracy
-* Evaluates the best model on the test dataset
+### Training
+To train the model from scratch, execute the script [tc1_baseline_keras2.py](tc1_baseline_keras2.py). This script does the following:
+* Reads the model configuration parameters from [tc1_default_model.txt](tc1_default_model.txt).
+* Downloads the training data and splits it to training/validation sets.
+* Creates and trains the Keras model.
+* Saves the best-trained model based on the validation accuracy.
+* Evaluates the best model on the test dataset.
 
+Here is example output from running the script:
 
 ```bash
    python tc1_baseline_keras2.py
@@ -69,13 +74,14 @@ Epoch 21/400:
 loss: 0.0613 - acc: 0.9819 - val_loss: 0.1349 - val_acc: 0.9722
 ```
 
-### Inference: 
-To test the trained model in inference, the script [tc1_infer.py](tc1_infer.py) does the following:
-* Downloads the trained model
-* Downloads the processed test dataset with the corresponding labels
-* Performs inference on the test dataset
-* Reports the accuracy of the model on the test dataset
+### Inference
+To test the trained model in inference, execute the script [tc1_infer.py](tc1_infer.py). This script does the following:
+* Downloads the trained model.
+* Downloads the processed test dataset with the corresponding labels.
+* Performs inference on the test dataset.
+* Reports the accuracy of the model on the test dataset.
 
+Here is example output from running the script:
 
 ```bash
    python tc1_infer.py
