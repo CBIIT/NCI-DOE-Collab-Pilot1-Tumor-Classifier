@@ -1,5 +1,5 @@
 ### Model Description
-This collection contains the model topology files and the trained model weights for the Tumor Classifier model (TC1). TC1 is a 1D convolutional network for classifying RNA-Seq gene expression profiles into 18 balanced tumor types (such as breast cancer, melanoma, and so on). The network follows the classic architecture of convolutional models with multiple 1D convolutional layers interleaved with pooling layers, followed by final dense layers. The network can optionally use the following layers:
+The Tumor Classifier model (TC1) is a 1D convolutional network for classifying RNA-Seq gene expression profiles into 18 balanced tumor types (such as breast cancer, melanoma, and so on). The network follows the classic architecture of convolutional models with multiple 1D convolutional layers interleaved with pooling layers, followed by final dense layers. The network can optionally use the following layers:
 * 1D locally-connected layers in place of convolution layers. 
 * Dropout layers for regularization. 
 
