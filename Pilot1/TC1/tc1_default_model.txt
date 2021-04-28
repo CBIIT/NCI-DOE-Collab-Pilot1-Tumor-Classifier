@@ -5,6 +5,7 @@ test_data = 'type_18_300_test.csv'
 model_name = 'tc1'
 trained_model_json = 'tc1.model.json'
 trained_model_h5 = 'tc1.model.h5' 
+xml_inference_file = 'inference.xml'
 conv=[128, 20, 1, 128, 10, 1]
 dense=[200,20]
 activation='relu'
