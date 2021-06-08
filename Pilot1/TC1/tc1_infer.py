@@ -28,6 +28,9 @@ sys.path.append(lib_path2)
 
 import tc1 as bmk
 import candle
+import unittest
+import io
+import xmlrunner
 
 
 def initialize_parameters(default_model = 'tc1_default_model.txt'):
@@ -80,6 +83,26 @@ def run(gParameters):
     print('json Test accuracy:', score_json[1])
     print("json %s: %.2f%%" % (loaded_model_json.metrics_names[1], score_json[1]*100))
 
+  
+class TestSum(unittest.TestCase):
+    
+    def test_sum(self):
+        x = "hello"
+        self.assertEqual(sum([1, 2, 3]), 6, "Should be 6")
+        self.assertEqual('hell',x,'the values are different')
+        print(x)
+
+    def test_jsonScore(self):
+        print(score_json[0])
+        self.assertEqual(score_json[0], 0.12268449479403595, "json Test Score")
+
+    def test_jsonAccuracy(self):
+        print(score_json[1])
+        self.assertEqual(score_json[1], 0.9712962967378121, "json Test Accuracy")
+
+   
+    """
+   
     import xml.etree.ElementTree as ET
     xml_inference_file = gParameters['xml_inference_file']
     top = ET.Element("inference")
@@ -96,16 +119,29 @@ def run(gParameters):
     xmlstr = minidom.parseString(ET.tostring(top)).toprettyxml(indent="   ")
     with open(xml_inference_file, "w") as f:
         f.write(xmlstr)
-
+    """
 
 def main():
+
     gParameters = initialize_parameters()
     run(gParameters)
 
 if __name__ == '__main__':
     main()
+    
+    unittest.main(
+        testRunner=xmlrunner.XMLTestRunner(output=output),
+        failfast=False, buffer=False, catchbreak=False)
     try:
         K.clear_session()
     except AttributeError:      # theano does not have this function
         pass
+    
+
+"""if __name__ == '__main__':
+    main()
+    try:
+        K.clear_session()
+    except AttributeError:      # theano does not have this function
+        pass"""
 
