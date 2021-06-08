@@ -87,11 +87,11 @@ def run(gParameters):
 class TestSum(unittest.TestCase):
     gParameters = initialize_parameters()
     score_json = run(gParameters)
-
+    print(score_json)
     def test_sum(self):
         x = "hello"
         self.assertEqual(sum([1, 2, 3]), 6, "Should be 6")
-        self.assertEqual('hell',x,'the values are different')
+        self.assertEqual('hello',x,'the values are different')
         print(x)
 
     def test_jsonScore(self):
