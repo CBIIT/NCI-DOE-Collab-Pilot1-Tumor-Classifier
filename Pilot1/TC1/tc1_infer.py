@@ -99,7 +99,6 @@ def run(gParameters):
 
 
 def main():
-
     gParameters = initialize_parameters()
     run(gParameters)
 
