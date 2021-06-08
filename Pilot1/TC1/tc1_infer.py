@@ -82,10 +82,12 @@ def run(gParameters):
     print('json Test score:', score_json[0])
     print('json Test accuracy:', score_json[1])
     print("json %s: %.2f%%" % (loaded_model_json.metrics_names[1], score_json[1]*100))
-
+    return score_json
   
 class TestSum(unittest.TestCase):
-    
+    gParameters = initialize_parameters()
+    score_json = run(gParameters)
+
     def test_sum(self):
         x = "hello"
         self.assertEqual(sum([1, 2, 3]), 6, "Should be 6")
@@ -127,11 +129,13 @@ def main():
     run(gParameters)
 
 if __name__ == '__main__':
-    main()
+    """main()"""
     
-    unittest.main(
-        testRunner=xmlrunner.XMLTestRunner(output=output),
-        failfast=False, buffer=False, catchbreak=False)
+    with open('C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/clone-modac-using-https_tc1_qc/Pilot1/TC1/results12.xml', 'wb') as output:
+    
+        unittest.main(
+            testRunner=xmlrunner.XMLTestRunner(output=output),
+            failfast=False, buffer=False, catchbreak=False)
     try:
         K.clear_session()
     except AttributeError:      # theano does not have this function
