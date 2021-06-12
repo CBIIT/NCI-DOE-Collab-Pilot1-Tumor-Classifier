@@ -82,29 +82,7 @@ def run(gParameters):
     print('json Test score:', score_json[0])
     print('json Test accuracy:', score_json[1])
     print("json %s: %.2f%%" % (loaded_model_json.metrics_names[1], score_json[1]*100))
-    return score_json
-  
-class TestSum(unittest.TestCase):
-    gParameters = initialize_parameters()
-    score_json = run(gParameters)
-    print(score_json)
-    def test_sum(self):
-        x = "hello"
-        self.assertEqual(sum([1, 2, 3]), 6, "Should be 6")
-        self.assertEqual('hello',x,'the values are different')
-        print(x)
-
-    def test_jsonScore(self):
-        print(score_json[0])
-        self.assertEqual(score_json[0], 0.12268449479403595, "json Test Score")
-
-    def test_jsonAccuracy(self):
-        print(score_json[1])
-        self.assertEqual(score_json[1], 0.9712962967378121, "json Test Accuracy")
-
-   
-    """
-   
+    
     import xml.etree.ElementTree as ET
     xml_inference_file = gParameters['xml_inference_file']
     top = ET.Element("inference")
@@ -121,7 +99,22 @@ class TestSum(unittest.TestCase):
     xmlstr = minidom.parseString(ET.tostring(top)).toprettyxml(indent="   ")
     with open(xml_inference_file, "w") as f:
         f.write(xmlstr)
-    """
+        
+    
+    return score_json
+  
+class TestSum(unittest.TestCase):
+    gParameters = initialize_parameters()
+    score_json = run(gParameters)
+
+    def test_jsonScore(self):
+        print('json Test score:', self.score_json[0])
+        self.assertEqual(self.score_json[0], 0.12268449479403595, "json Test Score")
+
+    def test_jsonAccuracy(self):
+        print('json Test accuracy:', self.score_json[1])
+        self.assertEqual(self.score_json[1], 0.9712962967378121, "json Test Accuracy")
+
 
 def main():
 
