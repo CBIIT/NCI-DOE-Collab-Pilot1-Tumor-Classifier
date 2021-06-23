@@ -103,7 +103,7 @@ def run(gParameters):
     
     return score_json
   
-class TestSum(unittest.TestCase):
+class TC1_Validations(unittest.TestCase):
     gParameters = initialize_parameters()
     score_json = run(gParameters)
 
