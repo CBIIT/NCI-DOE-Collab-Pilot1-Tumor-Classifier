@@ -115,9 +115,7 @@ class TC1_Validations(unittest.TestCase):
         print('json Test accuracy:', self.score_json[1])
         self.assertEqual(self.score_json[1], 0.9712962967378121, "json Test Accuracy")
         
-    def test_jsonAccuracy_fail(self):
-        print('json Test accuracy:', self.score_json[1])
-        self.assertEqual(self.score_json[1], 0.97129629673781, "json Test Accuracy")
+    
 
 
 def main():
