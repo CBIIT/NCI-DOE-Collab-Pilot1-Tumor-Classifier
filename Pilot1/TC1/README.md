@@ -3,7 +3,10 @@ The Tumor Classifier model (TC1) is a 1D convolutional network for classifying R
 * 1D locally-connected layers in place of convolution layers. 
 * Dropout layers for regularization. 
 
-The authors of this model trained and cross-validated it on 5,400 RNA-Seq profiles from the Genomic Data Commons (GDC). The full set of expression features contains 60,483 float columns transformed from RNA-Seq FPKM-UQ values. On the balanced dataset, this model achieves around 98% classification accuracy. The associated tumor type mapping for the samples are in the file [type_18_class_labels](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872). This model is useful for studying the relationships between latent representations of different tumor types as well as classifying synthetically-generated gene expression profiles. You can also use this model to flag incorrectly-typed gene expression profiles from the databases.
+The authors of this model trained and cross-validated it on 5,400 RNA-Seq profiles from the Genomic Data Commons (GDC). The full set of expression features contains 60,483 float columns transformed from RNA-Seq FPKM-UQ values. The transformation involves converting the FPKM-UQ values to TPM followed by a log transform. [TC1-dataprep.ipynb](https://github.com/CBIIT/NCI-DOE-Collab-Pilot1-Tumor_Classifier-hardening/blob/master/TC1-dataprep.ipynb) is a good example for the data processing.
+
+
+On the balanced dataset, this model achieves around 98% classification accuracy. The associated tumor type mapping for the samples are in the file [type_18_class_labels](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872). This model is useful for studying the relationships between latent representations of different tumor types as well as classifying synthetically-generated gene expression profiles. You can also use this model to flag incorrectly-typed gene expression profiles from the databases.
 
 ### Setup
 To set up the Python environment needed to train and run this model:
