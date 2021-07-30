@@ -43,7 +43,7 @@ def initialize_parameters(default_model = 'tc1_default_model.txt'):
     return gParameters
 
 
-def run(gParameters):
+def run(gParameters, testParam = "test"):
 
 
     # load json and create model
@@ -80,22 +80,10 @@ def run(gParameters):
     print('json Test accuracy:', score_json[1])
     print("json %s: %.2f%%" % (loaded_model_json.metrics_names[1], score_json[1]*100))
 
-    import xml.etree.ElementTree as ET
-    xml_inference_file = gParameters['xml_inference_file']
-    top = ET.Element("inference")
-    x_test_shape = ET.SubElement(top, 'x-test-shape')
-    y_test_shape = ET.SubElement(top, 'y-test-shape')
-    test_score = ET.SubElement(top, 'test-score')
-    test_accuracy = ET.SubElement(top, 'test-accuracy')
-
-    x_test_shape.text = str(X_test.shape)
-    y_test_shape.text = str(Y_test.shape)
-    test_score.text = str(score_json[0])
-    test_accuracy.text = str(score_json[1])
-    from xml.dom import minidom
-    xmlstr = minidom.parseString(ET.tostring(top)).toprettyxml(indent="   ")
-    with open(xml_inference_file, "w") as f:
-        f.write(xmlstr)
+    #return score_json to use in unittest case by QA
+    if testParam == "testing":
+        print("test param")
+        return score_json
 
 
 def main():
