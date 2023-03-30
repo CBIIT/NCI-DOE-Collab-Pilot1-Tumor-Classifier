@@ -12,6 +12,9 @@ Data scientists can train the provided untrained model on their own data, or use
 ### Uniqueness:	
 Researchers have commonly used machine learning to classify molecular data. This capability shows how you can use neural networks in classification of genomic profiles without downsampling the provided expressions.
 
+### Impact:
+TC1 can augment existing data quality control methods.
+
 ### Components:	
 * Untrained model: 
   * The untrained neural network model is defined in [tc1.model.json](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872), and is also available in YAML format.
