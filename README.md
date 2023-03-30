@@ -26,4 +26,4 @@ TC1 can augment existing data quality control methods.
   * The trained model weights file, tc1.model.h5, is available in [MoDaC](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872).
 
 ### Technical Details:
-Refer to this [README](./Pilot1/TC1/README.md)
+Refer to this [README](./Pilot1/TC1/README.md).
