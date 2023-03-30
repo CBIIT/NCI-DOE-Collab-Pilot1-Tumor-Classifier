@@ -87,11 +87,13 @@ To test the trained model in inference, execute the script [tc1_infer.py](tc1_in
 Here is example output from running the script:
 
 ```bash
-   python tc1_infer.py
-   
+python tc1_infer.py
+```
+
+```
    ...
    json Test score: 0.14670737570462128
    json Test accuracy: 0.9712962962962963
    json acc: 97.13%
 
-   ```
+```
