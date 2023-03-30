@@ -35,9 +35,11 @@ To train the model from scratch, execute the script [tc1_baseline_keras2.py](tc1
 Here is example output from running the script:
 
 ```bash
-   python tc1_baseline_keras2.py
-   ...
-   ...
+python tc1_baseline_keras2.py
+```
+
+```
+...
 Loading data...
 done
 df_train shape: (4320, 60484)
@@ -91,9 +93,9 @@ python tc1_infer.py
 ```
 
 ```
-   ...
-   json Test score: 0.14670737570462128
-   json Test accuracy: 0.9712962962962963
-   json acc: 97.13%
+...
+json Test score: 0.14670737570462128
+json Test accuracy: 0.9712962962962963
+json acc: 97.13%
 
 ```
