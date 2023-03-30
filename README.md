@@ -17,12 +17,13 @@ TC1 can augment existing data quality control methods.
 
 ### Components:	
 * Untrained model: 
-  * The untrained neural network model is defined in [tc1.model.json](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872), and is also available in YAML format.
+  * The untrained neural network model is defined in [tc1_baseline_keras2.py](./Pilot1/TC1/tc1_baseline_keras2.py).
+
 * Data:
   * The processed training and test data are in [MoDaC](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872).
+  
 * Trained model:
-  * The trained model is defined by combining the untrained model and model weights.
-  * The trained model weights are used in inference [tc1.model.h5](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872)
+  * The trained model weights can be found in this file [tc1.model.h5](https://modac.cancer.gov/searchTab?dme_data_id=NCI-DME-MS01-6996872).
 
 ### Technical Details:
 Refer to this [README](./Pilot1/TC1/README.md)
